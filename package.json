@@ -1,0 +1,64 @@
+{
+  "name": "flower-cli",
+  "version": "0.0.7",
+  "description": "Flower command line tool",
+  "main": "lib/index.js",
+  "author": "Andrew Chen <yongjhih@gmail.com>",
+  "license": "",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-flow-runtime": "^0.17.0",
+    "babel-plugin-transform-flow-to-gen": "^0.0.13",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "csv-parse": "^2.0.4",
+    "documentation": "^5.4.0",
+    "flow-bin": "^0.65.0",
+    "flow-coverage-report": "^0.4.1",
+    "flow-jsdoc": "^0.3.1",
+    "flow-remove-types": "^1.2.3",
+    "flow-typed": "^2.3.0",
+    "jest": "20.0.4",
+    "nock": "^9.1.6"
+  },
+  "scripts": {
+    "lint": "yarn run flow check",
+    "build": "yarn run -- babel -d lib src && (yarn unlink; yarn link)",
+    "start": "node lib/index.js",
+    "flow": "yarn run flow",
+    "coverage": "yarn run flow-coverage-report",
+    "test": "yarn run -- jest --coverage lib",
+    "docs": "yarn run -- documentation build src/** -f html -o docs",
+    "jsdoc2flow": "yarn run -- flow-jsdoc -d ./lib -o ./jsdoc2flow"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "commander": "^2.14.1",
+    "commander-rxjs": "^0.0.6",
+    "faker": "^4.1.0",
+    "flow-runtime": "^0.17.0",
+    "flow-runtime-validators": "^0.17.0",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^5.0.0",
+    "immutable": "^3.8.2",
+    "moment": "^2.20.1",
+    "moment-timezone": "^0.5.14",
+    "rxjs": "^5.5.6",
+    "validator": "^9.4.1"
+  },
+  "bin": {
+    "flower": "lib/index.js"
+  },
+  "flow-coverage-report": {
+    "includeGlob": [
+      "src//**/*.js"
+    ],
+    "type": [
+      "text",
+      "html",
+      "json"
+    ],
+    "threshold": 50
+  }
+}
